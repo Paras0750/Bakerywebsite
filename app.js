@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/bakeryDB", {
+mongoose.connect("mongodb://0.0.0.0:27017/bakeryDB", {
   useNewUrlParser: true,
 });
 
@@ -80,9 +80,8 @@ app.post("/addToCart", function (req, res) {
   const order = new OrderItem({
     orderID: OrderID,
   });
-  
-  order.save();
 
+  order.save();
 
   res.redirect("/");
 });
@@ -96,5 +95,5 @@ app.post("/failure", function (req, res) {
 });
 
 app.listen(3000, () => {
-  console.log("Example app listening on port 3000!");
+  console.log("App listening on port 3000!");
 });
